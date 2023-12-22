@@ -1,0 +1,36 @@
+Throw_dice Function:
+
+Parameters:
+
+int N: Represents the number of dice.
+int faces: Denotes the number of faces on each die.
+int total: Specifies the desired total.
+
+Function Overview:
+
+std::vector<std::vector<int>> dp(N + 1, std::vector<int>(total + 1, 0));: Initializes a 2D vector dp with dimensions (N + 1) rows and (total + 1) columns, initializing all elements to zero.
+This vector will store the number of ways to achieve specific totals when throwing a certain number of dice.
+
+dp[0][0] = 1;: Sets the base case in the DP table when no dice are thrown to get a total of 0. This initialization is necessary for the dynamic programming approach.
+
+Nested Loops:
+
+Two loops (for loops) iterate over the number of dice thrown (i) and the desired total (j).
+Within these loops, another loop calculates the number of ways to achieve the total j using i dice and all possible face values from 1 to faces.
+dp[i][j] += dp[i - 1][j - k];: Accumulates the number of ways by considering the previous results stored in the DP table. 
+It calculates the number of ways to get the total j by subtracting the face value k from it, using i - 1 dice.
+Returns dp[N][total]: Provides the final result, which represents the number of ways to throw N dice with faces faces each to achieve the desired total.
+
+Main Function:
+
+Initializes variables for:
+N: Number of dice (3 in this case).
+faces: Number of faces on each die (6 in this case).
+total: Desired total (7 in this case).
+Calls the throw_dice function with the specified parameters.
+Outputs the result to the console, showing the number of ways to achieve the desired total by throwing the specified number of dice with a certain number of faces on each die.
+Overall, this code efficiently utilizes dynamic programming to calculate and determine the number of ways to throw N dice with faces faces each to obtain a total of total.
+
+
+
+
